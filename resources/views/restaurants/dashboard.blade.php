@@ -152,7 +152,7 @@
                 toast.style.opacity = '0';
                 setTimeout(() => toast.remove(), 500);
             }
-        }, 5000); // toast disappears after 5 seconds
+        }, 5000); 
     </script>
     @endif
 
@@ -169,7 +169,6 @@
             @method('PUT')
 
             <input type="hidden" name="id" id="foodId">
-            <!-- <input type="hidden" name="categoryId" id="menu_category_id"> -->
 
             <div class="mb-4">
                 <label class="block font-semibold">Category</label>
@@ -219,12 +218,10 @@ function openEditModal(id, name, price, description, categoryId) {
     document.getElementById('foodName').value = name;
     document.getElementById('foodPrice').value = price;
     document.getElementById('foodDescription').value = description;
-    // document.getElementById('menu_category_id').value = categoryId;
+
 
     document.querySelector('select[name="menu_category_id"]').value = categoryId;
 
-
-    // Update the form action dynamically
     const form = document.getElementById('editForm');
     form.action = updateFoodUrl.replace('FOOD_ID', id);
 }

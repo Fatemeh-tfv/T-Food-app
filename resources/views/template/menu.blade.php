@@ -21,9 +21,6 @@
                                 @foreach ($category->foodItems as $item)
                                 <a href="{{ route('food-item.show', $item->id) }}">
                                     <div class="group relative flex flex-col space-y-2"> 
-                                        <!-- <h3 class="text-lg font-semibold text-gray-7000 mb-4">
-                                            {{ $item->name }}
-                                        </h3> -->
                                         <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="w-[200px] h-[200px] rounded-lg bg-white object-cover group-hover:opacity-75 sm:w-[250px] sm:h-[250px] lg:w-[300px] lg:h-[300px]">                                        
                                         <div class="flex flex-row items-center gap-x-6 mt-4">
                                         <h4 class="text-base font-semibold text-gray-900">{{ $item->name }}</h4>

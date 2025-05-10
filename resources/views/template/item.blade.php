@@ -34,12 +34,9 @@
 
     <!-- Image gallery -->
     <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-      <!-- <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-secondary-product-shot.jpg" alt="Two each of gray, white, and black shirts laying flat." class="hidden size-full rounded-lg object-cover lg:block"> -->
       <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-        <!-- <img src="{{ asset($food->image) }}" alt="{{ $food->name }}" class="aspect-3/2 w-full rounded-lg object-cover"> -->
         <img src="{{ asset($food->image) }}" alt="{{ $food->name }}" class="aspect-3/2 w-full rounded-lg object-cover">
       </div>
-      <!-- <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/product-page-02-featured-product-shot.jpg" alt="Model wearing plain white basic tee." class="aspect-4/5 size-full object-cover sm:rounded-lg lg:aspect-auto"> -->
     </div>
 
     <!-- Product info -->
@@ -186,102 +183,6 @@
         });
     });
 </script>
-
-<!-- <script>
-   document.addEventListener('DOMContentLoaded', function () {
-    const buyButton = document.getElementById('buy-{{ $food->id }}');
-    const quantityControls = document.getElementById('quantity-controls-{{ $food->id }}');
-    const quantityInput = document.getElementById('quantity-{{ $food->id }}');
-    const cartForm = document.getElementById('cart-update-form-{{ $food->id }}');
-
-    // Flag to prevent switching back
-    let isItemAddedToCart = false;
-
-    buyButton.addEventListener('click', function (event) {
-        // Prevent the default form submit action (page reload)
-        event.preventDefault();
-
-        if (!isItemAddedToCart) {
-            buyButton.classList.add('hidden');    // Hide the "Add to basket" button
-            quantityControls.classList.remove('hidden');    // Show the quantity controls
-            quantityInput.focus();    // Focus the input
-
-            // Automatically submit the form when first adding the item
-            submitForm();
-
-            // Set the flag to true to prevent the button from showing again
-            isItemAddedToCart = true;
-        }
-    });
-
-    window.decreaseQuantity = function (foodId) {
-        const input = document.getElementById('quantity-' + foodId);
-        let current = parseInt(input.value) || 1;
-
-        if (current > 1) {
-            input.value = current - 1;
-            submitForm();
-        } else if (current === 1) {
-            // Hide quantity controls and show "Add to basket"
-            const buyButton = document.getElementById('buy-' + foodId);
-            const quantityControls = document.getElementById('quantity-controls-' + foodId);
-
-            input.value = 0; // optionally show 0
-            submitForm();
-
-            quantityControls.classList.add('hidden');
-            buyButton.classList.remove('hidden');
-
-            // Reset flag if you're using one to prevent toggling back
-            isItemAddedToCart = false;
-        }
-    }
-
-    window.increaseQuantity = function (foodId) {
-        const input = document.getElementById('quantity-' + foodId);
-        let current = parseInt(input.value) || 1;
-        input.value = current + 1;
-        submitForm(true);
-    };
-
-
-    function submitForm(isUpdate = false) {
-    const foodId = cartForm.dataset.foodId;
-    const quantity = parseInt(quantityInput.value);
-
-    const url = isUpdate
-        ? `/order/update/${foodId}`  // Your update route
-        : cartForm.action;           // Original add route
-
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: JSON.stringify({
-            food_item_id: foodId,
-            quantity: quantity
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Cart updated:', data);
-
-        // Only update visuals if this was an initial add
-        if (!isUpdate) {
-            buyButton.classList.add('hidden');
-            quantityControls.classList.remove('hidden');
-            isItemAddedToCart = true;
-        }
-    })
-    .catch(error => console.error('Error updating cart:', error));
-}
-
-});
-
-</script> -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const buyButton = document.getElementById('buy-{{ $food->id }}');
